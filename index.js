@@ -8,13 +8,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // * Please DO NOT INCLUDE the private app access token in your repo. Don't do this practicum in your normal account.
-const PRIVATE_APP_ACCESS = '';
+const TOKEN = process.env.HUBSPOT_TOKEN;
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
 // * Code for Route 1 goes here
 app.get("/", async (req, res) => {
-    const records = await getCustomObjectRecords();  // Appel API pour récupérer les enregistrements des Pokémon
+    const records = await getPokemon();
     res.render('homepage', { title: 'Pokemon', records });
 })
 
@@ -70,6 +70,12 @@ app.post('/update', async (req, res) => {
 });
 */
 
+async function getPokemon() {
+    const response = await axios.get("https://api.hubspot.com/crm/v3/objects/pokemons", {
+        headers: {'Authorization': 'Bearer ' + TOKEN},
+    });
+    return response.data.results
+}
 
 // * Localhost
 app.listen(3000, () => console.log('Listening on http://localhost:3000'));

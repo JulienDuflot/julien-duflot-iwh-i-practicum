@@ -1,12 +1,13 @@
- doctype html
- html 
-     head 
-         title= `${title}`
-         meta(name="viewport" content="width=device-width, initial-scale=1")
-         link(rel="stylesheet", href="/css/style.css")
-     body    
-         h1 Pokemon 
-         .cards 
-             each contact in data
-                 .card 
-                     h2.card__name #{pokemons.properties.name}  #{pokemon.properties.type}
+doctype html
+html 
+    head 
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body    
+        h1 Pokemon, Catch 'em all 
+        .cards 
+            each pokemon in records
+                .card 
+                    h2.card__name #{pokemon.properties.name}  
+                    p.card__type #{pokemon.properties.type}

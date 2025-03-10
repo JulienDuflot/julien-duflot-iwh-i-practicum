@@ -30,6 +30,10 @@ h1 {
     font-size: 1rem;
 }
 
+.card__type {
+    font-size: 1rem;
+}
+
 .form-wrapper {
     font-size: 18px;
     max-width: 768px;
