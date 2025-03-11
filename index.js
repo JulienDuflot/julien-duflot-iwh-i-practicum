@@ -22,10 +22,18 @@ app.get("/", async (req, res) => {
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
 // * Code for Route 2 goes here
+app.get("/form", (req, res) => {
+    res.render('updates', {title: 'Add your favorite Pokemon'});
+})
 
 // TODO: ROUTE 3 - Create a new app.post route for the custom objects form to create or update your custom object data. Once executed, redirect the user to the homepage.
 
 // * Code for Route 3 goes here
+app.post("/create", async (req, res) => {
+    const {name, type, photo} = req.body
+    const newPokemon = await createPokemonRecord(name, type, photo);
+    res.redirect("/");
+})
 
 /** 
 * * This is sample code to give you a reference for how you should structure your calls. 
@@ -76,6 +84,20 @@ async function getPokemon() {
         headers: {'Authorization': 'Bearer ' + TOKEN},
     });
     return response.data.results
+}
+
+async function createPokemonRecord(name, type, photo) {
+    const payload = {
+        properties: {
+            "name": name,
+            "type": type,
+            "photo": photo,
+          }
+    }
+    const response = await axios.post("https://api.hubapi.com/crm/v3/objects/pokemons", {
+        headers: {'Authorization': 'Bearer ' + TOKEN, 'Content-type': 'application/json'}, payload,
+    });
+    return response.data
 }
 
 // * Localhost
