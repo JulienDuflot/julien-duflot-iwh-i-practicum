@@ -16,7 +16,7 @@ const TOKEN = process.env.HUBSPOT_TOKEN;
 app.get("/", async (req, res) => {
     const records = await getPokemon();
     res.render('homepage', { title: 'Pokemon', records });
-    console.log(records)
+    //console.log(records)
 })
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
@@ -33,7 +33,7 @@ app.post("/create", async (req, res) => {
     const {name, type, photo} = req.body
     const newPokemon = await createPokemonRecord(name, type, photo);
     res.redirect("/");
-    console.log(type)
+    console.log('type', req.body);
 })
 
 /** 
