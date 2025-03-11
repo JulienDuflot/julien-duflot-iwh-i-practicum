@@ -5,10 +5,19 @@ html
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/css/style.css")
     body    
-        h1 Pokemon, Catch 'em all 
-        .cards 
+        h1 #{title}, Catch 'em all 
+        a.cta(href="/update-cobj") Add your favorite pokemon !
+        table 
+            tr 
+                th Pokemon 
+                th Name 
+                th Type
             each pokemon in records
-                .card 
-                    img.card__img(src=`${pokemon.properties.photo}`)
-                    h2.card__name #{pokemon.properties.name}  
-                    p.card__type #{pokemon.properties.type}
+                tr
+                    td 
+                        img.card__img(src=`${pokemon.properties.photo}`)
+                    td 
+                        h2.img__name #{pokemon.properties.name}
+                    td 
+                        p.img__type #{pokemon.properties.type}
+

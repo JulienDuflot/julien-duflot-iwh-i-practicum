@@ -10,28 +10,37 @@ h1 {
     margin: 1rem;
 }
 
-.cards {
+table {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    margin: 10px 20px;
 }
 
-.card {
-    flex-basis: 31%;
-    margin: 1rem 0.4rem;
-    padding: 1rem 0.4rem 2.5rem 0.4rem;
-    border: solid 1px lightgrey;
-    border-radius: 15px;
-    box-shadow: 3px 2px 6px lightgrey;
+table th {
+    background-color: aquamarine;
+    min-width: 150px;
 }
 
-.card__email {
-    font-size: 1rem;
+table td {
+    border-collapse: collapse;
+}
+
+.cta {
+    background-color: red;
+    margin: 10px 20px;
+    color: white;
+    border-radius: 30px;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .card__img {
     max-width: 3rem;
+}
+
+.card__name {
+    font-weight: 800;
 }
 
 .card__type {
