@@ -80,7 +80,7 @@ app.post('/update', async (req, res) => {
 */
 
 async function getPokemon() {
-    const response = await axios.get("https://api.hubapi.com/crm/v3/objects/pokemons?properties=name&properties=type&properties=photo", {
+    const response = await axios.get("https://api.hubapi.com/crm/v3/objects/pokemons?limit=100&properties=name&properties=type&properties=photo", {
         headers: {'Authorization': 'Bearer ' + TOKEN},
     });
     return response.data.results
@@ -91,14 +91,20 @@ async function createPokemonRecord(name, type, photo) {
         properties: {
             "name": name,
             "type": type,
-            "photo": photo,
+            "photo": photo
           }
     }
-    const response = await axios.post("https://api.hubapi.com/crm/v3/objects/pokemons", {
-        headers: {'Authorization': 'Bearer ' + TOKEN, 'Content-type': 'application/json'}, payload,
-    });
-    return response.data
-}
+    const headers = {
+        'Authorization': 'Bearer ' + TOKEN, 
+        'Content-type': 'application/json'
+    }
+    try {
+        await axios.post("https://api.hubapi.com/crm/v3/objects/pokemons", payload, {headers});
+        res.redirect('back');
+    } catch(err) {
+        console.error(err)
+    }
+};
 
 // * Localhost
 app.listen(3000, () => console.log('Listening on http://localhost:3000'));

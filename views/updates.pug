@@ -6,11 +6,15 @@ html
         link(rel="stylesheet", href="/css/style.css")
     body    
         h1 #{title}
-        form(action="/create" method="POST")
-            label(for="name") Name: 
+        form.form-wrapper(action="/create" method="POST")
+            label(for="name") Name*: 
             input(type="text" name="name" required)
-            label(for="type") Type: 
-            input(type="enum" name="type" required)
-            label(for="photo") Photo: 
-            input(type="text" name="photo")
+            label(for="Type") Type*:
+            select(for="type") 
+                option(value="Fire") Fire
+                option(value="Water") Water
+                option(value="Grass") Grass
+                option(value="Electric") Electric
+            label(for="photo") Photo url: 
+            input(type="text" name="photo") 
             button(type="submit") Add
