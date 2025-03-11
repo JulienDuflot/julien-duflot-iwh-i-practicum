@@ -33,7 +33,7 @@ app.post("/create", async (req, res) => {
     const {name, type, photo} = req.body
     const newPokemon = await createPokemonRecord(name, type, photo);
     res.redirect("/");
-    console.log('type', req.body);
+    // console.log('type', req.body);
 })
 
 /** 
