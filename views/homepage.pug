@@ -6,9 +6,9 @@ html
         link(rel="stylesheet", href="/css/style.css")
     body    
         h1 Pokemon, Catch 'em all 
-        #{records}
         .cards 
             each pokemon in records
                 .card 
+                    img.card__img(src=`${pokemon.properties.photo}`)
                     h2.card__name #{pokemon.properties.name}  
                     p.card__type #{pokemon.properties.type}

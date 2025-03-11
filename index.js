@@ -72,7 +72,7 @@ app.post('/update', async (req, res) => {
 */
 
 async function getPokemon() {
-    const response = await axios.get("https://api.hubspot.com/crm/v3/objects/pokemons?properties=name&properties=type&properties=photo", {
+    const response = await axios.get("https://api.hubapi.com/crm/v3/objects/pokemons?properties=name&properties=type&properties=photo", {
         headers: {'Authorization': 'Bearer ' + TOKEN},
     });
     return response.data.results

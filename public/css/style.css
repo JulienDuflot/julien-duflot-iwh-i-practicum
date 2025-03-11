@@ -30,6 +30,10 @@ h1 {
     font-size: 1rem;
 }
 
+.card__img {
+    max-width: 3rem;
+}
+
 .card__type {
     font-size: 1rem;
 }
